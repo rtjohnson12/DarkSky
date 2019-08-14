@@ -7,32 +7,41 @@
 ##  
 ###############################################
 
-env.run <- "dev"
-
-## =========================================
-## loading packages and environment settings
-## =========================================
-
-library(shiny)
-
-# Define UI for application that draws a histogram
 shinyUI(fluidPage(
+    
+    ## ======================================
+    ## Global UI Settings
+    ## ======================================
+    theme = shinytheme("cyborg"),
+    
 
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins
+    
+    titlePanel("DarkSky Testing"),
+    
+    ## ======================================
+    ## Sidebar Layout
+    ## ======================================
     sidebarLayout(
+        
+        # -----------------------------------
+        # Sidebar Setup
+        # -----------------------------------
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
+            sliderInput("obs",
+                        "Number of observations:",
+                        min = 0,
+                        max = 1000,
+                        value = 500)
         ),
-
-        # Show a plot of the generated distribution
+        
+        # -----------------------------------
+        # Body Setup
+        # -----------------------------------
         mainPanel(
+            
+            # tags$script(HTML("$('body').addClass('fixed');")),
+            # br(), br(),
+            
             plotOutput("distPlot")
         )
     )
