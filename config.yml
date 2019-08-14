@@ -1,0 +1,7 @@
+default:
+  emailto: "rjohnson@teainc.org"
+
+  dir.main: "C:/Users/rjohnson/Desktop/DarkSky"
+
+Staging:
+  Ozette.dsn: "Driver={ODBC Driver 17 for SQL Server}; Server=SQLUAnalytics; Database=Ozette; Uid=shinyuser; pwd=Sh1nyUs3r;"
