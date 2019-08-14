@@ -17,7 +17,7 @@ env.run <- "dev"
 suppressPackageStartupMessages({
   # shiny
   library(shiny)
-  library(shinydashboard)
+  library(shinythemes)
   
   # utility
   library(config)
