@@ -7,42 +7,63 @@
 ##  
 ###############################################
 
-shinyUI(fluidPage(
-    
-    ## ======================================
+shinyUI(navbarPage(
+    ## ========================================
     ## Global UI Settings
-    ## ======================================
+    ## ========================================
+    title = "DarkSky API",
     theme = shinytheme("cyborg"),
     
-
+    ## ========================================
+    ## Washington Map
+    ## ========================================
+    tabPanel("Component 1",
+             fluidPage(fluidRow(
+                 
+                 # tags$script(HTML("$('body').addClass('fixed');")),
+                 # br(), br(),
+                 
+                 
+                 ## ===========================
+                 ## Sidebar
+                 ## ===========================
+                 column(2, "sidebar",
+                        
+                        
+                        sliderInput("obs",
+                                    "Number of observations:",
+                                    min = 0,
+                                    max = 1000,
+                                    value = 500)
+                        
+                 ),
+                 
+                 ## ===========================
+                 ## Sidebar
+                 ## ===========================
+                 column(10, "main",
+                        
+                        
+                        plotOutput("distPlot")
+                        
+                 )
+                 
+             ))   
+    ),
     
-    titlePanel("DarkSky Testing"),
+    ## ========================================
+    ## Second Page
+    ## ========================================
+    tabPanel("Component 2"
+             
+             
+    ),
     
-    ## ======================================
-    ## Sidebar Layout
-    ## ======================================
-    sidebarLayout(
-        
-        # -----------------------------------
-        # Sidebar Setup
-        # -----------------------------------
-        sidebarPanel(
-            sliderInput("obs",
-                        "Number of observations:",
-                        min = 0,
-                        max = 1000,
-                        value = 500)
-        ),
-        
-        # -----------------------------------
-        # Body Setup
-        # -----------------------------------
-        mainPanel(
-            
-            # tags$script(HTML("$('body').addClass('fixed');")),
-            # br(), br(),
-            
-            plotOutput("distPlot")
-        )
+    ## ========================================
+    ## Additional Pages
+    ## ========================================
+    navbarMenu("More",
+               tabPanel("Sub A"),
+               tabPanel("Sub B")
     )
 ))
