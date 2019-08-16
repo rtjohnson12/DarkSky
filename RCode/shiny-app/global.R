@@ -7,7 +7,7 @@
 ##  
 ###############################################
 
-env.run <- "Deploy"
+env.run <- "dev"
 
 # rsconnect::setAccountInfo(name='rtjohnson12',
 #                           token='956AE93A5991BF429170528B93F77417',
@@ -53,9 +53,7 @@ suppressPackageStartupMessages({
 })
 
 # Configurations
-if(env.run != "Deployment") {
-  config <- config::get(file = "config.yml", config = Sys.getenv("R_CONFIG_ACTIVE", env.run))
-}
+# config <- config::get(file = "config.yml", config = Sys.getenv("R_CONFIG_ACTIVE", env.run))
 
 # Options
 options(stringsAsFactors = FALSE)
