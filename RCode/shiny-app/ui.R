@@ -11,13 +11,13 @@ shinyUI(navbarPage(
     ## ========================================
     ## Global UI Settings
     ## ========================================
-    title = "DarkSky API",
+    title = "Exploring R Shiny",
     theme = shinytheme("cyborg"),
     
     ## ========================================
     ## Washington Weather Map
     ## ========================================
-    tabPanel("Weather map",
+    tabPanel("Maps",
              fluidPage(fluidRow(
                  
                  # tags$script(HTML("$('body').addClass('fixed');")),
@@ -26,21 +26,43 @@ shinyUI(navbarPage(
                  ## ===========================
                  ## Sidebar
                  ## ===========================
-                 column(2, "sidebar",
+                 column(2,
                         
-                        selectInput("map.city", label = h3("Select City"), 
-                                    choices = list("Seattle" = 1), 
-                                    selected = 1)
+                        # ---------------------
+                        # Map Input
+                        # ---------------------
+                        fluidRow(
+                            column(8, 
+                            selectInput("map.city", label = h5("Select City"), 
+                                        choices = c("Seattle"), selected = "Seattle")),
+                            
+                            column(4,
+                            numericInput("map.zoom", label = h5("Zoom"), value = 11))
+                        ),
+                        
+                        # ---------------------
+                        # City Description
+                        # ---------------------
+                        fluidRow(
+                            tableOutput("CityDescription")
+                        )
                         
                  ),
                  
                  ## ===========================
                  ## Main
                  ## ===========================
-                 column(10, "main",
-                        
-                        renderLeaflet("WeatherMap", width="100%", height="100%")
-                        
+                 column(10,
+
+                        mainPanel( 
+                            width = 12,
+                            tabsetPanel(
+                                tabPanel("Geography", leafletOutput("GeographyMap", height = 800)),
+                                tabPanel("Weather")
+                            )
+                        )
+
+
                  )
                  
              ))   

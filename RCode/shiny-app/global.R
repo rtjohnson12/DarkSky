@@ -7,7 +7,7 @@
 ##  
 ###############################################
 
-env.run <- "dev"
+env.run <- "Deploy"
 
 # rsconnect::setAccountInfo(name='rtjohnson12',
 #                           token='956AE93A5991BF429170528B93F77417',
@@ -29,11 +29,14 @@ suppressPackageStartupMessages({
   library(config)
   library(glue)
   library(scales)
+  library(rvest)
 
   # tidyverse
   library(dplyr)
   library(tidyr)
   library(lubridate)
+  library(stringr)
+  library(tibble)
   
   # plotting
   library(ggplot2)
@@ -42,12 +45,17 @@ suppressPackageStartupMessages({
   
   # reports
   library(knitr)
-  library(rhandsontable)
+  library(formattable)
   library(rmarkdown)
+  
+  # darksky
+  library(darksky)
 })
 
 # Configurations
-config <- config::get(file = "config.yml", config = Sys.getenv("R_CONFIG_ACTIVE", env.run))
+if(env.run != "Deployment") {
+  config <- config::get(file = "config.yml", config = Sys.getenv("R_CONFIG_ACTIVE", env.run))
+}
 
 # Options
 options(stringsAsFactors = FALSE)
@@ -57,7 +65,7 @@ options(stringsAsFactors = FALSE)
 ## =========================================
 
 # Storing Directories
-dir.data <- paste0(config$dir.main, "/Data")
+# dir.data <- paste0(config$dir.main, "/Data")
 
 # # Set-Up
 # source(paste0(config$dir.main, "/RCode/initialSetup.R"))
