@@ -48,8 +48,9 @@ suppressPackageStartupMessages({
   library(formattable)
   library(rmarkdown)
   
-  # darksky
+  # weather
   library(darksky)
+  library(owmr)
 })
 
 # Configurations

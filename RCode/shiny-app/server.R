@@ -33,8 +33,7 @@ shinyServer(function(input, output) {
     
     map.forecast <- reactive({
         
-        browser()
-        # darksky::get_forecast_for(map.coordinates()$lat, map.coordinates()$lng, today())
+        darksky::get_forecast_for(map.coordinates()$lat, map.coordinates()$lng, today())
         
     })
     
@@ -49,7 +48,25 @@ shinyServer(function(input, output) {
         
         # map setup
         m <- leaflet() %>% addTiles() %>% 
-            setView(lng = map.coordinates$lng, lat = map.coordinates$lat, zoom = map.zoom)
+            setView(lng = map.coordinates$lng, lat = map.coordinates$lat, zoom = map.zoom) %>%
+            addMiniMap(zoomLevelOffset = -4)
+        
+        # render map
+        m
+    })
+    
+    output$TopographyMap <- renderLeaflet({
+        
+        # map parameters
+        map.coordinates <- map.coordinates()
+        map.zoom <- 11
+        
+        nhd.wms.url <- "https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WmsServer"
+        
+        # map setup
+        m <- leaflet() %>% addTiles() %>% 
+            setView(lng = map.coordinates$lng, lat = map.coordinates$lat, zoom = map.zoom) %>% 
+            addWMSTiles(nhd.wms.url, layers = "0")
         
         # render map
         m
@@ -65,7 +82,7 @@ shinyServer(function(input, output) {
             html_nodes("table.vcard") %>% 
             html_table(header=FALSE, fill=TRUE) %>% 
             .[[1]] %>% as.data.frame()
-            
+        
         clean.info.box <- switch(
             city,
             Seattle = info.box %>% 
@@ -120,7 +137,7 @@ shinyServer(function(input, output) {
         
         # render table
         clean.info.box
-
+        
     }, colnames = FALSE, hover = TRUE)
     
 })
