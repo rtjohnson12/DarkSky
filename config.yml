@@ -1,6 +1,9 @@
 default:
   emailto: "rjohnson@teainc.org"
+  
   darksky_key: dc9d059f63d7d39272e909cbbe7c1f0f
+  owmr_key: 3b31195bce21244b20f6c61cd8cdb550
+  
   dir.main: "C:/Users/rjohnson/Desktop/DarkSky"
 
 Staging:
