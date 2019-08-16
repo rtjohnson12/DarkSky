@@ -56,8 +56,8 @@ shinyUI(navbarPage(
                         mainPanel( 
                             width = 12,
                             tabsetPanel(
-                                tabPanel("Geography", leafletOutput("GeographyMap", height = 900)),
-                                tabPanel("Topography", leafletOutput("TopographyMap", height = 900))
+                                tabPanel("Geography", leafletOutput("GeographyMap", height = 900))
+                                , tabPanel("Topography", leafletOutput("TopographyMap", height = 900))
                             )
                         )
                         

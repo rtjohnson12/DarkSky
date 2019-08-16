@@ -33,8 +33,8 @@ shinyServer(function(input, output) {
     
     map.forecast <- reactive({
         
-        darksky::get_forecast_for(map.coordinates()$lat, map.coordinates()$lng, today())
-        
+        # darksky::get_forecast_for(map.coordinates()$lat, map.coordinates()$lng, today())
+        # owmr::get_current("Seattle", units = "metric")
     })
     
     ## ========================================
@@ -61,12 +61,9 @@ shinyServer(function(input, output) {
         map.coordinates <- map.coordinates()
         map.zoom <- 11
         
-        nhd.wms.url <- "https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WmsServer"
-        
         # map setup
         m <- leaflet() %>% addTiles() %>% 
-            setView(lng = map.coordinates$lng, lat = map.coordinates$lat, zoom = map.zoom) %>% 
-            addWMSTiles(nhd.wms.url, layers = "0")
+            setView(lng = map.coordinates$lng, lat = map.coordinates$lat, zoom = map.zoom)
         
         # render map
         m
