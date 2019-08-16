@@ -9,6 +9,11 @@
 
 env.run <- "dev"
 
+# rsconnect::setAccountInfo(name='rtjohnson12',
+#                           token='956AE93A5991BF429170528B93F77417',
+#                           secret='<SECRET>')
+# rsconnect::deployApp("RCode/shiny-app")
+
 ## =========================================
 ## loading packages and environment settings
 ## =========================================
@@ -18,6 +23,7 @@ suppressPackageStartupMessages({
   # shiny
   library(shiny)
   library(shinythemes)
+  library(rsconnect)
   
   # utility
   library(config)

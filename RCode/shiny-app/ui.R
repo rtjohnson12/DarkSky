@@ -15,36 +15,31 @@ shinyUI(navbarPage(
     theme = shinytheme("cyborg"),
     
     ## ========================================
-    ## Washington Map
+    ## Washington Weather Map
     ## ========================================
-    tabPanel("Component 1",
+    tabPanel("Weather map",
              fluidPage(fluidRow(
                  
                  # tags$script(HTML("$('body').addClass('fixed');")),
                  # br(), br(),
-                 
                  
                  ## ===========================
                  ## Sidebar
                  ## ===========================
                  column(2, "sidebar",
                         
-                        
-                        sliderInput("obs",
-                                    "Number of observations:",
-                                    min = 0,
-                                    max = 1000,
-                                    value = 500)
+                        selectInput("map.city", label = h3("Select City"), 
+                                    choices = list("Seattle" = 1), 
+                                    selected = 1)
                         
                  ),
                  
                  ## ===========================
-                 ## Sidebar
+                 ## Main
                  ## ===========================
                  column(10, "main",
                         
-                        
-                        plotOutput("distPlot")
+                        renderLeaflet("WeatherMap", width="100%", height="100%")
                         
                  )
                  
