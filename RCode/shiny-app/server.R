@@ -57,7 +57,7 @@ shinyServer(function(input, output) {
     
     output$CityDescription <- renderTable({
         
-        city <- "Santa Clara" # input$map.city
+        city <- input$map.city
         
         # scrape wikipedia
         info.box <- wikipedia.url() %>% 
@@ -104,14 +104,6 @@ shinyServer(function(input, output) {
                               X2 = gsub("\\[.*\\]", "", X2)) %>% 
                 
                 do({
-                    # city nickname
-                    .[1,1] = 'Nickname'
-                    .[1,2] = gsub(".*:", "", .[1,2])
-                    
-                    # city motto
-                    .[2,1] = 'Motto'
-                    .[2,2] = gsub(".*:", "", .[2,2])
-                    
                     # city government
                     .[6,2] = ""
                     

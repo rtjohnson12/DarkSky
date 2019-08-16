@@ -11,7 +11,7 @@ shinyUI(navbarPage(
     ## ========================================
     ## Global UI Settings
     ## ========================================
-    title = "Exploring R Shiny",
+    title = "The Places I've Been",
     theme = shinytheme("cyborg"),
     
     ## ========================================
