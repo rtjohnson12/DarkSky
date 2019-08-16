@@ -34,7 +34,8 @@ shinyUI(navbarPage(
                         fluidRow(
                             column(8, 
                             selectInput("map.city", label = h5("Select City"), 
-                                        choices = c("Seattle"), selected = "Seattle")),
+                                        choices = c("Seattle", "Santa Clara"), 
+                                        selected = "Seattle")),
                             
                             column(4,
                             numericInput("map.zoom", label = h5("Zoom"), value = 11))
