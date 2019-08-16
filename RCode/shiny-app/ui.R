@@ -32,20 +32,18 @@ shinyUI(navbarPage(
                         # Map Input
                         # ---------------------
                         fluidRow(
-                            column(8, 
+                            column(12, 
                             selectInput("map.city", label = h5("Select City"), 
-                                        choices = c("Seattle", "Santa Clara"), 
-                                        selected = "Seattle")),
-                            
-                            column(4,
-                            numericInput("map.zoom", label = h5("Zoom"), value = 11))
+                                         choices = c("Seattle", "Santa Clara"), 
+                                         selected = "Seattle"))
                         ),
                         
                         # ---------------------
                         # City Description
                         # ---------------------
                         fluidRow(
-                            tableOutput("CityDescription")
+                            column(12,
+                            tableOutput("CityDescription"))
                         )
                         
                  ),
@@ -54,7 +52,7 @@ shinyUI(navbarPage(
                  ## Main
                  ## ===========================
                  column(10,
-
+                        
                         mainPanel( 
                             width = 12,
                             tabsetPanel(
@@ -62,8 +60,8 @@ shinyUI(navbarPage(
                                 tabPanel("Weather")
                             )
                         )
-
-
+                        
+                        
                  )
                  
              ))   

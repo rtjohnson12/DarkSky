@@ -45,7 +45,7 @@ shinyServer(function(input, output) {
         
         # map parameters
         map.coordinates <- map.coordinates()
-        map.zoom <- input$map.zoom
+        map.zoom <- 11
         
         # map setup
         m <- leaflet() %>% addTiles() %>% 
