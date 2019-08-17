@@ -55,6 +55,33 @@ shinyServer(function(input, output) {
         m
     })
     
+    output$WorldMap <- renderLeaflet({
+        
+        # dataframe for markers
+        visit.data <- data.frame(
+            City = c("Seattle", "Santa Clara", "San Francisco"),
+            State = c("Washington", "California", "California"),
+            Country = c("US", "US", "US"),
+            Long = c(-122.3320708,-121.955238,-122.4194),
+            Lat = c(47.6062095,37.354107,37.77493),
+            n = c(100, 60, 10)
+        ) %>% tibble::add_row(
+            City = "Portland", State = "OR", Country = "US",
+            Long = -122.676482, Lat = 45.523062, n = 10
+        )
+        
+        # owmr::search_city_list("", country_code = "US")
+        
+        # map setup
+        m <- leaflet(visit.data) %>% addTiles() %>% 
+            addCircles(lng = ~Long, lat = ~Lat, weight = 1,
+                       radius = ~n * 1000, popup = ~City
+            )
+        
+        # render map
+        m
+    })
+    
     output$TopographyMap <- renderLeaflet({
         
         # map parameters

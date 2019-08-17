@@ -11,14 +11,20 @@ shinyUI(navbarPage(
     ## ========================================
     ## Global UI Settings
     ## ========================================
-    title = "The Places I've Been",
+    title = "Otenki ~ お天気",
     theme = shinytheme("cyborg"),
     
     ## ========================================
     ## Second Page
     ## ========================================
-    tabPanel("Component 2",
+    tabPanel("Places I've Been",
              fluidPage(fluidRow(
+                 
+                 column(12,
+                        
+                        leafletOutput("WorldMap", height = 800)
+                        
+                        ) # <!-- column -->
                  
              )) # <!-- fluidPage / fluidRow -->
              
@@ -27,7 +33,7 @@ shinyUI(navbarPage(
     ## ========================================
     ## Maps for Individual Cities
     ## ========================================
-    tabPanel("Maps",
+    tabPanel("City Maps",
              fluidPage(fluidRow(
                  
                  # tags$script(HTML("$('body').addClass('fixed');")),

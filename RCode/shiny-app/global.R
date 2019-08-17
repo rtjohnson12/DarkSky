@@ -42,15 +42,18 @@ suppressPackageStartupMessages({
   library(ggplot2)
   library(leaflet)
   library(plotly)
+  library(maps)
+  library(mapproj)
   
   # reports
   library(knitr)
   library(formattable)
   library(rmarkdown)
   
-  # weather
+  # weather / geocodes
   library(darksky)
   library(owmr)
+  library(ggmap)
 })
 
 # Configurations
