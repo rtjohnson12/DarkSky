@@ -15,7 +15,17 @@ shinyUI(navbarPage(
     theme = shinytheme("cyborg"),
     
     ## ========================================
-    ## Washington Weather Map
+    ## Second Page
+    ## ========================================
+    tabPanel("Component 2",
+             fluidPage(fluidRow(
+                 
+             )) # <!-- fluidPage / fluidRow -->
+             
+    ), # <!-- tabPanel -->
+    
+    ## ========================================
+    ## Maps for Individual Cities
     ## ========================================
     tabPanel("Maps",
              fluidPage(fluidRow(
@@ -36,7 +46,7 @@ shinyUI(navbarPage(
                             selectInput("map.city", label = h5("Select City"), 
                                          choices = c("Seattle", "Santa Clara"), 
                                          selected = "Seattle"))
-                        ),
+                        ), # <!-- fluidRow -->
                         
                         # ---------------------
                         # City Description
@@ -44,9 +54,9 @@ shinyUI(navbarPage(
                         fluidRow(
                             column(12,
                             tableOutput("CityDescription"))
-                        )
+                        ) # <!-- fluidRow -->
                         
-                 ),
+                 ), # <!-- column -->
                  
                  ## ===========================
                  ## Main
@@ -59,29 +69,24 @@ shinyUI(navbarPage(
                                 tabPanel("Geography", leafletOutput("GeographyMap", height = 900))
                                 # , tabPanel("Topography", leafletOutput("TopographyMap", height = 900))
 
-
-                            )
-                        )
+                            ) # <!-- tabsetPanel -->
+                        ) # <!-- mainPanel -->
                         
                         
-                 )
+                 ) # <!-- column -->
                  
-             ))   
-    ),
-    
-    ## ========================================
-    ## Second Page
-    ## ========================================
-    tabPanel("Component 2"
-             
-             
-    ),
+             )) # <!-- fluidPage / fluidRow -->
+    ), # <!-- tabPanel -->
     
     ## ========================================
     ## Additional Pages
     ## ========================================
     navbarMenu("More",
-               tabPanel("Sub A"),
-               tabPanel("Sub B")
-    )
-))
+               tabPanel("Sub A"
+                        
+                        ), # <!-- tabPanel -->
+               tabPanel("Sub B"
+                        
+                        ) # <!-- tabPanel -->
+    ) # <!-- navbarMenu -->
+)) # <!-- navbarPage / shinyUI -->
