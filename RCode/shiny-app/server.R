@@ -55,27 +55,20 @@ shinyServer(function(input, output) {
         m
     })
     
-    output$WorldMap <- renderLeaflet({
-        
-        # icon
-        greenLeafIcon <- makeIcon(
-            iconUrl = "http://leafletjs.com/examples/custom-icons/leaf-green.png",
-            iconWidth = 38, iconHeight = 95,
-            iconAnchorX = 22, iconAnchorY = 94,
-            shadowUrl = "http://leafletjs.com/examples/custom-icons/leaf-shadow.png",
-            shadowWidth = 50, shadowHeight = 64,
-            shadowAnchorX = 4, shadowAnchorY = 62
-        )
-        
-        # %>% tibble::add_row(
-        #     City = "asdf", State = "asdf", Country = "asdf",
-        #     Long = asdf, Lat = asdf
-        # )
-        
-        # owmr::search_city_list("Frankfurt", country_code = "DE")
+    output$USMap <- renderLeaflet({
         
         # map setup
         m <- leaflet(city.data %>% dplyr::filter(Country == "US")) %>% addTiles() %>% 
+            addMarkers(lng = ~Long, lat = ~Lat, popup = ~City) # %>% suspendScroll()
+        
+        # render map
+        m
+    })
+    
+    output$EuropeMap <- renderLeaflet({
+        
+        # map setup
+        m <- leaflet(city.data %>% dplyr::filter(Country %in% c("DE", "FR", "NL"))) %>% addTiles() %>% 
             addMarkers(lng = ~Long, lat = ~Lat, popup = ~City)
         
         # render map

@@ -30,7 +30,7 @@ suppressPackageStartupMessages({
   library(glue)
   library(scales)
   library(rvest)
-
+  
   # tidyverse
   library(dplyr)
   library(tidyr)
@@ -41,6 +41,7 @@ suppressPackageStartupMessages({
   # plotting
   library(ggplot2)
   library(leaflet)
+  library(leaflet.extras)
   library(plotly)
   library(maps)
   library(mapproj)
@@ -53,7 +54,6 @@ suppressPackageStartupMessages({
   # weather / geocodes
   library(darksky)
   library(owmr)
-  library(ggmap)
 })
 
 # Configurations
@@ -120,7 +120,26 @@ city.data <- data.frame(
 ) %>% tibble::add_row(
   City = "Strasbourg", State = NA, Country = "FR",
   Long = 7.74296, Lat = 48.58342
+) %>% tibble::add_row(
+  City = "Amsterdam", State = NA, Country = "NL",
+  Long = 4.97222, Lat = 52.30750
+) %>% tibble::add_row(
+  City = "New York City", State = "NY", Country = "US",
+  Long = -74.00597, Lat = 40.71427
+) %>% tibble::add_row(
+  City = "New Orleans", State = "LA", Country = "US",
+  Long = -90.07507, Lat = 29.95465
+) %>% tibble::add_row(
+  City = "Las Vegas", State = "NV", Country = "US",
+  Long = -115.13722, Lat = 36.17497
 )
+
+#  %>% tibble::add_row(
+#     City = "asdf", State = "asdf", Country = "asdf",
+#     Long = asdf, Lat = asdf
+# )
+
+# owmr::search_city_list("Frankfurt", country_code = "DE")
 
 ## =========================================
 ## Directories & Sourcing Files
