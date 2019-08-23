@@ -5,8 +5,8 @@ account: rtjohnson12
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1091957
-bundleId: 2327383
+bundleId: 2347328
 url: https://rtjohnson12.shinyapps.io/shiny-app/
-when: 1565992937.8418
+when: 1566538777.03905
 asMultiple: FALSE
 asStatic: FALSE
