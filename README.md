@@ -1,6 +1,6 @@
 # Weather Shiny App
 
-https://rtjohnson12.shinyapps.io/shiny-app/
+Exploring R-Shiny using weather data
 
 ---
 
