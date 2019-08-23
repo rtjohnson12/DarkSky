@@ -22,7 +22,7 @@ shinyUI(navbarPage(
                  
                  column(3,
                         HTML('<div class="card mb-3">
-  <h3 class="card-header">Card header</h3>
+  <h3 class="card-header">Places Ive Been</h3>
   <div class="card-body">
     <h5 class="card-title">Special title treatment</h5>
     <h6 class="card-subtitle text-muted">Support card subtitle</h6>
