@@ -1,6 +1,6 @@
 # Weather Shiny App
 
-Exploring R-Shiny using weather data
+Exploring R-Shiny using geospatial data
 
 ---
 
